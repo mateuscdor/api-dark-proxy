@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const { runtime,fetchJson } = require('../lib')
+const { runtime, getJson } = require('../lib')
 __path = process.cwd()
 
 router.get('/statistic', async (req, res, next) => {
 
-	let hits = await fetchJson('https://api.countapi.xyz/hit/rest-api-alip.herokuapp.com/visitor')
+	let hits = await getJson('https://api.countapi.xyz/hit/rest-api-alip.herokuapp.com/visitor')
 
 	res.json({
 	status: true,
