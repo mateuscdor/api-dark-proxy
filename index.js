@@ -13,6 +13,7 @@ app.use(favicon(path.join(__dirname,'public','images','favicon.ico')))
 
 var main = require('./routes/main');
 var api = require('./routes/api');
+var md = require('./routes/md');
 
 app.set('trust proxy', true);
 app.set("json spaces",2)
@@ -21,6 +22,7 @@ app.use(secure)
 app.use(cookieParser());
 app.use(express.static("public"))
 app.use('/', main);
+app.use('/bot', md);
 
 app.use(function (req, res, next) {
 	next(createError(404))
