@@ -1,7 +1,7 @@
 require('../settings')
 const express = require('express')
 const translate = require('translate-google-api')
-const alip = require("../lib/listdl")
+const alip = require("../lib")
 const textto = require('soundoftext-js')
 const googleIt = require('google-it')
 const { shortText } = require("limit-text-js")
@@ -14,7 +14,7 @@ const BitlyClient = require('bitly').BitlyClient
 const canvasGif = require('canvas-gif')
 const { convertStringToNumber } = require('convert-string-to-number'); 
 const isImageURL = require('image-url-validator').default
-const {fetchJson, runtime, getBuffer} = require('../lib/myfunc')
+const {getJson, runtime, getBuffer} = require('../lib')
 const Canvacord = require("canvacord");
 const isNumber = require('is-number');
 var router = express.Router()
@@ -932,7 +932,7 @@ router.get('/search/sticker', async (req, res, next) => {
 
 router.get('/randomgambar/couplepp', async (req, res, next) => {
 
-	let resultt = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/kopel.json')
+	let resultt = await getJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/kopel.json')
 	let random = resultt[Math.floor(Math.random() * resultt.length)]
 
 	res.json({
@@ -949,7 +949,7 @@ router.get('/randomgambar/couplepp', async (req, res, next) => {
 
 router.get('/randomgambar/dadu', async (req, res, next) => {
 
-	let dadu = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/dadu.json')
+	let dadu = await getJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/dadu.json')
 	let random = dadu[Math.floor(Math.random() * dadu.length)]
 	var result = await getBuffer(random.result)
 	res.set({'Content-Type': 'image/webp'})
@@ -985,7 +985,7 @@ router.get('/game/tembakgambar', async (req, res, next) => {
 
 router.get('/game/susunkata', async (req, res, next) => {
 
-	let ra = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/susunkata.json')
+	let ra = await getJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/susunkata.json')
 	let ha = ra[Math.floor(Math.random() * ra.length)]
 		  
   res.json({
@@ -998,7 +998,7 @@ router.get('/game/susunkata', async (req, res, next) => {
 
 router.get('/game/tembakbendera', async (req, res, next) => {
 
-	let ra = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebakbendera.json')
+	let ra = await getJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebakbendera.json')
 	let ha = ra[Math.floor(Math.random() * ra.length)]
 		  
   res.json({
@@ -1012,7 +1012,7 @@ router.get('/game/tembakbendera', async (req, res, next) => {
 
 router.get('/game/tembakgame', async (req, res, next) => {
 
-	let ra = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebakgame.json')
+	let ra = await getJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebakgame.json')
 	let ha = ra[Math.floor(Math.random() * ra.length)]
 		  
   res.json({
@@ -1025,7 +1025,7 @@ router.get('/game/tembakgame', async (req, res, next) => {
 
 router.get('/game/tembakkata', async (req, res, next) => {
 
-	let ra = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebakkata.json')
+	let ra = await getJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebakkata.json')
 	let ha = ra[Math.floor(Math.random() * ra.length)]
 		  
   res.json({
@@ -1038,7 +1038,7 @@ router.get('/game/tembakkata', async (req, res, next) => {
 
 router.get('/game/tembaklirik', async (req, res, next) => {
 
-	let ra = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebaklirik.json')
+	let ra = await getJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebaklirik.json')
 	let ha = ra[Math.floor(Math.random() * ra.length)]
 		  
   res.json({
@@ -1050,7 +1050,7 @@ router.get('/game/tembaklirik', async (req, res, next) => {
 })
 router.get('/game/tembaklagu', async (req, res, next) => {
 
-	let ra = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebaklagu.json')
+	let ra = await getJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebaklagu.json')
 	let ha = ra[Math.floor(Math.random() * ra.length)]
 		  
   res.json({
@@ -1062,7 +1062,7 @@ router.get('/game/tembaklagu', async (req, res, next) => {
 })
 router.get('/game/tembakkimia', async (req, res, next) => {
 
-	let ra = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebakkimia.json')
+	let ra = await getJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/tebakkimia.json')
 	let ha = ra[Math.floor(Math.random() * ra.length)]
 		  
   res.json({
@@ -1355,7 +1355,7 @@ router.get('/maker/emojimix', async (req, res, next) => {
 	if (!emoji2 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter emoji2"})  
 	
 
-	let data = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
+	let data = await getJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 	let jadi = data.results[Math.floor(Math.random() * data.results.length)]
 	if (!jadi ) return res.json(loghandler.notfound)
 	for (let ress of data.results) {
@@ -1560,7 +1560,7 @@ router.get('/linkshort/cuttly', async (req, res, next) => {
 	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url sahaja"})  
 
 	let randomapicuttly = apicuttly[Math.floor(Math.random() * apicuttly.length)]
-	var hasil = await fetchJson(`https://cutt.ly/api/api.php?key=${randomapicuttly}&short=${link}`)
+	var hasil = await getJson(`https://cutt.ly/api/api.php?key=${randomapicuttly}&short=${link}`)
   if (!hasil.url.shortLink ) return res.json(loghandler.error)
 
 	res.json({
@@ -1601,7 +1601,7 @@ router.get('/linkshort/bitly', async (req, res, next) => {
 router.get('/info/githubstalk', async (req, res, next) => {
 	var user = req.query.user
 	if (!user ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter user"})  
-	let gitstalk = await fetchJson(`https://api.github.com/users/${user}`)
+	let gitstalk = await getJson(`https://api.github.com/users/${user}`)
 	if (!gitstalk.login ) return res.json(loghandler.notfound)
 
 	res.json({
