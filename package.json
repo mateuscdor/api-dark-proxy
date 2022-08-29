@@ -1,7 +1,7 @@
 {
-  "name": "rest-api-alpis",
+  "name": "alexa-web",
   "version": "2.0.0",
-  "description": "make by alip free rest api",
+  "description": "Alexa API's",
   "main": "index.js",
   "engines": {
     "node": "16.x"
@@ -18,16 +18,14 @@
     "url": "git+https://github.com/AlipBot/Api-Alpis.git"
   },
   "keywords": [
-    "restapi",
-    "bot",
-    "whatsaap"
+    "alexa"
   ],
-  "author": "AlipBot",
-  "license": "ISC",
+  "author": "Shefin",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlipBot/Api-Alpis/issues"
+    "url": "https://github.com/dark-vro/alexa-web/issues"
   },
-  "homepage": "https://github.com/AlipBot/Api-Alpis#readme",
+  "homepage": "https://github.com/dark-vro/alexa-web#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "bitly": "^7.1.2",
