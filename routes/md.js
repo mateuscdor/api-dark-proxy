@@ -2,7 +2,7 @@ const { WAConnection, MessageType } = require('@adiwajshing/baileys').default
 const makeWASocket = require("@adiwajshing/baileys").default
 const { exec, spawn, execSync } = require("child_process")
 const pino = require('pino')
-const qrcode= require('qr-image')
+const qrimg = require('qr-image')
 const fs = require('fs')
 const aes256 = require('aes256');
 const { delay, useSingleFileAuthState } = require("@adiwajshing/baileys")
@@ -17,7 +17,7 @@ const path = require('path')
 var router = express.Router();
 const port = process.env.PORT || 3000;
 /* GET home page. */
-router.get('/qr', function(req, res, next) {
+router.get('/', function(req, res, next) {
 var options = {
 
         root: path.join()
