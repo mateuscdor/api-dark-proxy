@@ -1,20 +1,7 @@
-__path = process.cwd()
-
-//_______________________ ┏  Info  ┓ _______________________\\
-//
-//   Credit : AlipBot
-//   
-//   Note 
-//   Jangan Jual SC ini ,
-//   Jangan Buang Text ini,
-//   Siapa Mahu Upload Jangan Lupa Credit :),
-//   Siapa Tidak Letak Credit Akan Ambil Tindakan
-//   
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
-
 var express = require('express');
 var router = express.Router();
 const { runtime,fetchJson } = require('../lib/myfunc')
+__path = process.cwd()
 
 router.get('/statistic', async (req, res, next) => {
 
