@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { runtime,fetchJson } = require('../lib/myfunc')
+const { runtime,fetchJson } = require('../lib')
 __path = process.cwd()
 
 router.get('/statistic', async (req, res, next) => {
