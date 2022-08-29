@@ -20,7 +20,6 @@ app.use(cors())
 app.use(secure)
 app.use(cookieParser());
 app.use(express.static("public"))
-app.use('/api', api);
 app.use('/', main);
 
 app.use(function (req, res, next) {
